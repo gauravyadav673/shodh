@@ -8,16 +8,17 @@ var User = require('../models/user')
 
 const rp = require('request-promise');
 const cheerio = require('cheerio')
-
+var citation = require('../models/userData').citation;
 /* GET users listing. */
 
 
 function retrieveCitations(scholarID, username){
     var url = 'https://scholar.google.co.in/citations?user=' + scholarID;
-
+    console.log(scholarID, username);
     rp(url)
       .then(function(html){
         var $ = cheerio.load(html);
+        //console.log(html);
         var data = {};
         var contDiv = $('#gsc_rsb_st');
         var x=contDiv.children();
@@ -26,7 +27,6 @@ function retrieveCitations(scholarID, username){
             data[y[i].children[0].children[0].children[0].data] = y[i].children[1].children[0].data;
         }
         //console.log(data);
-        var citation = require('../models/userData').citation;
 
         var newCitation =  new citation({
             username:username,
@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('register');
+    res.render('register', {'title': 'Register'});
 });
 
 router.post('/register', upload.single('profileimage'), function(req, res, next) {
@@ -83,6 +83,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
             errors:errors
         });
     }else{
+        console.log(name, email, username, scholarID, password);
         User.getUserByUsername(username, function(err, user){
             if(!user){
                 var newUser = new User({
@@ -113,7 +114,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
 
 router.get('/login', function(req, res, next) {
     if(req.user)
-        res.redirect('/');
+        res.redirect('/addData');
     res.render('login', { title: 'Login' });
 });
 
@@ -122,7 +123,7 @@ router.post('/login',
     function(req, res) {
     req.flash('success', 'You are now logged in');
 
-    res.redirect('/');
+    res.redirect('/profile');
 });
 
 passport.serializeUser(function(user, done){
