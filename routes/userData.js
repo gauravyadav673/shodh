@@ -54,10 +54,10 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 			duration:duration
 		});
 		newOrganised.save(function(err, organised){
-			res.redirect('/');
+			res.redirect('/addData');
 		});
 	}else{
-		res.redirect('/');
+		res.redirect('/addData');
 	}
 });
 
@@ -80,14 +80,15 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 			duration:duration
 		});
 		newAttended.save(function(err, attended){
-			res.redirect('/');
+			res.redirect('/addData');
 		});
 	}else{
-		res.redirect('/');
+		res.redirect('/addData');
 	}
 });
 
 router.post('/patent', ensureAuthenticated, function(req, res, next){
+	console.log(req);
 	var userName = req.user.userName;
 	var name = req.body.patentName;
 	var patentNumber = req.body.patentNumber;
@@ -103,10 +104,13 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 			dateOfPatent:date
 		});
 		newPatent.save(function(err, patent){
-			res.redirect('/');
+			if(err)
+				console.log(err);
+			res.redirect('/addData');
 		});
 	}else{
-		res.res.redirect('/');
+		console.log(userName);
+		res.redirect('/addData');
 	}
 });
 
@@ -154,16 +158,18 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			endDate:endDate
 		});		
 		newProject.save(function(err, project){
-			res.redirect('/');
+			if(err)
+				console.log(err);
+			res.redirect('/addData');
 		});
 	}else{
-		res.redirect('/');
+		res.redirect('/addData');
 	}
 
 });
 
 function ensureAuthenticated(req, res, next) {
-	console.log(req.user);
+	//console.log(req.user);
     if(req.isAuthenticated()){
       return next();
     }

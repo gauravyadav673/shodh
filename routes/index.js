@@ -3,17 +3,17 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
-	console.log(req);
+	//console.log(req);
   res.render('index', { title: 'Members' });
 });
 
-router.get('/profile', (req, res) => {
-	console.log(req.user.username);
+router.get('/addData', ensureAuthenticated, (req, res, next) => {
+	//console.log(req.user.username);
 	res.render('profile', {'name': req.user.username});
 });
 
 function ensureAuthenticated(req, res, next) {
-	console.log(req.user);
+	//console.log(req.user);
     if(req.isAuthenticated()){
       return next();
     }
