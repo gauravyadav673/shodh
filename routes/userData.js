@@ -157,6 +157,7 @@ router.get('/getData', ensureAuthenticated, function(req, res, next){
 		});
 });
 
+///// next one not completed yet
 
 router.get('/dataByYear', ensureAuthenticated, function(req, res, next){
 	if(req.user.admin){
