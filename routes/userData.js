@@ -1,14 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+
+var proj = require('../models/userData').proj;
 var attended = require('../models/userData').attended;
 var organised = require('../models/userData').organised;
 var patent = require('../models/userData').patent;
-var project = require('../models/userData').project;
+var citation = require('../models/userData').citation;
 
 router.post('/organised', ensureAuthenticated, function(req, res, next){
 	var name = req.body.name;
-	var userName = req.user.userName;
+	var userName = req.body.userName;
 	var sponsor = req.body.sponsor;
 	var grant = req.body.grant;
 	var venue = req.body.venue;
@@ -16,33 +18,7 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 	var endDate = req.body.endDate;
 	var duration = req.body.duration;
 
-/*    req.checkBody('name', 'Name field is required').notEmpty();
-    req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();
-    req.checkBody('venue', 'Venue field is required').notEmpty();
-    req.checkBody('startDate', 'Start Date is required').notEmpty();
-    req.checkBody('endDate', 'End Date is required').notEmpty();
-
-    var errors = req.validationErrors();
-    if(errors){
-        res.redirect('/');
-    }else{
-		var newOrganised = new organised({
-			userName:userName,
-			eventName:name,
-			sponsor:sponsor,
-			grant:grant,
-			venue:venue,
-			startDate:startDate,
-			endDate:endDate,
-			duration:duration
-		});
-		newOrganised.save(function(err, organised){
-			res.redirect('/');
-		});
-    }
-*/
-	if(name && userName && sponsor && grant && venue && startDate && endDate && duration){
+	if(name && userName && sponsor && grant && venue && startDate && endDate){
 		var newOrganised = new organised({
 			userName:userName,
 			eventName:name,
@@ -63,13 +39,13 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 
 router.post('/attended', ensureAuthenticated, function(req, res, next){
 	var name = req.body.name;
-	var userName = req.user.userName;
+	var userName = req.body.userName;
 	var sponsor = req.body.sponsor;
 	var venue = req.body.venue;
 	var startDate = req.body.startDate;
 	var endDate = req.body.endDate;
 	var duration = req.body.duration;
-	if(name && userName && sponsor && venue && startDate && endDate && duration){
+	if(name && userName && sponsor && venue && startDate && endDate){
 		var newAttended = new attended({
 			userName:userName,
 			eventName:name,
@@ -87,76 +63,17 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 	}
 });
 
-router.post('/patent', ensureAuthenticated, function(req, res, next){
-<<<<<<< HEAD
-	console.log(req);
-	var userName = req.user.userName;
-=======
-	var userName = req.body.userName;
->>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
-	var name = req.body.patentName;
-	var patentNumber = req.body.patentNumber;
-	var description = req.body.description;
-	var date = req.body.date;
-	console.log(userName, name, patentNumber, description, date);
-	if(userName && name && patentNumber && description && date){
-		var newPatent = new patent({
-			username:userName,
-			name:name,
-			patentNumber:patentNumber,
-			description:description,
-			dateOfPatent:date
-		});
-		newPatent.save(function(err, patent){
-			if(err)
-				console.log(err);
-			res.redirect('/addData');
-		});
-	}else{
-<<<<<<< HEAD
-		console.log(userName);
-		res.redirect('/addData');
-=======
-		res.redirect('/');
->>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
-	}
-});
-
 router.post('/project', ensureAuthenticated, function(req, res, next){
-	var username = req.user.username;
+	var username = req.body.userName;
 	var name = req.body.projectName;
 	var sponsor = req.body.sponsor;
 	var grant = req.body.grant;
 	var description = req.body.description;
 	var startDate = req.body.startDate;
 	var endDate = req.body.endDate;
-
-/*    req.checkBody('name', 'Name field is required').notEmpty();
-    req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();
-    req.checkBody('description', 'Description field is required').notEmpty();
-    req.checkBody('startDate', 'Start Date is required').notEmpty();
-
-    var errors = req.validationErrors();
-    if(errors){
-        res.redirect('/');
-    }else{
-		var newProject = new project({
-			username:username,
-			name:name,
-			sponsor:sponsor,
-			grant:grant,
-			description:description,
-			startDate:startDate,
-			endDate:endDate
-		});
-    	newProject.save(function(err, project){
-    		res.redirect('/');
-		});
-    }
-*/
+	console.log(username, name, sponsor, grant, description, startDate, endDate);
 	if(username && name && sponsor && grant && description && startDate && endDate){
-		var newProject = new project({
+		var newProject = new proj({
 			username:username,
 			name:name,
 			sponsor:sponsor,
@@ -176,12 +93,86 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 
 });
 
+router.post('/patent', ensureAuthenticated, function(req, res, next){
+
+	var userName = req.body.userName;
+	var name = req.body.patentName;
+	var patentNumber = req.body.patentNumber;
+	var description = req.body.description;
+	var date = req.body.date;
+	console.log(userName, name, patentNumber, description, date);
+	if(userName && name && patentNumber && description && date){
+		var newPatent = new patent({
+			username:userName,
+			name:name,
+			patentNumber:patentNumber,
+			description:description,
+			dateOfPatent:date
+		});
+		newPatent.save(function(err, patent){
+			if(err)
+				console.log(err);
+			res.redirect('/addData');
+		});
+	}else{
+		res.redirect('/addData');
+	}
+});
+
+
+////////***** Getters Start*****/////////
+
+router.get('/getData', function(req, res){
+	var user = req.user;
+
+	if(!user)
+		res.redirect('/users/login');
+	else{
+		var username = user.username;
+		var patents, projects, eventsOrganised, eventsAttended, citations;
+		proj.find({username:username}, function(err, project){
+			if(!err){
+				projects = project;
+			}
+			attended.find({username:username}, function(err, attend){
+				if(!err){
+					eventsAttended = attend;
+				}
+				patent.find({username:username}, function(err, pat){
+					if(!err){
+						patents = pat;
+					}
+					citation.find({username:username}, function(err, cit){
+						if(!err){
+							citations = cit;
+						}
+						organised.find({username:username}, function(err, organise){
+							if(!err){
+								eventsOrganised = organise;
+							}
+						console.log(patents, projects, eventsOrganised, eventsAttended, citations);
+						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
+						})
+
+					});	
+				});			
+
+			});
+
+		});
+
+
+
+
+
+	}
+});
+
+////////***** Getters End******////////
+
+
 function ensureAuthenticated(req, res, next) {
-<<<<<<< HEAD
-	//console.log(req.user);
-=======
-	// console.log(req.user);
->>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
+
     if(req.isAuthenticated()){
       return next();
     }

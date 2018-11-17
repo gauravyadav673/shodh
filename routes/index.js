@@ -7,7 +7,7 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
 });
 
 router.get('/addData', ensureAuthenticated, (req, res, next) => {
-	res.render('profile', {'name': req.user.username});
+	res.render('dataEntry', {'name': req.user.username});
 });
 
 function ensureAuthenticated(req, res, next) {

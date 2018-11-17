@@ -17,6 +17,8 @@ html(lang='en')
             if user
               li(class=(title == 'Members' ? 'active' : ''))
                 a(href='/') Add Data
+              li(class=(title == 'Member' ? 'active' : ''))
+                a(href='/data/getData') Profile
             if !user
               li(class=(title == 'Register' ? 'active' : ''))
                 a(href='/users/register') Register
