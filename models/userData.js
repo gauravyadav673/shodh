@@ -13,7 +13,7 @@ var attendedSchema = mongoose.Schema({
 	venue:{
 		type:String
 	},
-	startData:{
+	startDate:{
 		type:Date 
 	},
 	endDate:{
@@ -41,7 +41,7 @@ var organisedSchema = mongoose.Schema({
 	venue:{
 		type:String
 	},
-	startData:{
+	startDate:{
 		type:Date 
 	},
 	endDate:{
@@ -88,7 +88,33 @@ var citationSchema = mongoose.Schema({
 	}
 });
 
+var projectSchema = mongoose.Schema({
+	username:{
+		type:String
+	},
+	name:{
+		type:String
+	},
+	sponsor:{
+		type:String
+	},
+	grant:{
+		type:String
+	},
+	description:{
+		type:String
+	},
+	startDate:{
+		type:Date
+	},
+	endDate:{
+		type:Date
+	}
+
+});
+
 module.exports.attended = mongoose.model('attended', attendedSchema);
 module.exports.organised = mongoose.model('organised', organisedSchema);
 module.exports.patent = mongoose.model('patent', patentSchema);
 module.exports.citation = mongoose.model('citaion', citationSchema);
+module.exports.project = mongoose.model('project', projectSchema);
