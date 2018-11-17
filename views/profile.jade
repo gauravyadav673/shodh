@@ -1,0 +1,104 @@
+extends layout
+
+block content
+  
+  <!-- name= name -->
+
+  div(class="card border-dark mb-3").shadowed.mt-5
+    div.card-header.font-weight-bold Add Reasearch Project
+    div(class="card-body text-dark").px-5
+      <!-- h5(class="card-title") card -->
+      form.w-100(action="/data/project" method="post")
+        div.form-group
+          label(for="name") Project Name
+          input(type="text").form-control
+        div.form-group
+          label(for="sponsor") Sponsor
+          input(type="text").form-control
+        div.form-group
+          label(for="grant") Grant
+          input(type="text").form-control
+        div.form-group
+          label(for="venue") Venue
+          input(type="text").form-control
+        div.form-group
+          label(for="startDate") Start Date
+          input(type="date").form-control
+        div.form-group
+          label(for="endDate") End Date
+          input(type="date").form-control
+        div.form-group
+          label(for="duration") Duration
+          input(type="text").form-control
+        div.form-group
+          input(type="submit" value="Submit").btn.btn-info.form-control
+        
+  div(class="card border-dark mb-3").shadowed.mt-5
+    div.card-header.font-weight-bold Add Patent
+    div(class="card-body text-dark").px-5
+      <!-- h5(class="card-title") card -->
+      form.w-100(action="/data/patent" method="post")
+        div.form-group
+          label(for="patentName") Patent Name
+          input(type="text").form-control
+        div.form-group
+          label(for="patentNumber") Patent Number
+          input(type="text").form-control
+        div.form-group
+          label(for="description") Description
+          input(type="text").form-control
+        div.form-group
+          label(for="date") Date
+          input(type="date").form-control
+        div.form-group
+          input(type="submit" value="Submit").btn.btn-info.form-control
+  
+  div(class="card border-dark mb-3").shadowed.mt-5
+    div.card-header.font-weight-bold Add Event Organised
+    div(class="card-body text-dark").px-5
+      <!-- h5(class="card-title") card -->
+      form.w-100(action="/data/organised" method="post")
+        div.form-group
+          label(for="name") Event Name
+          input(type="text").form-control
+        div.form-group
+          label(for="sponsor") Sponsor
+          input(type="text").form-control
+        div.form-group
+          label(for="grant") Grant
+          input(type="text").form-control
+        div.form-group
+          label(for="venue") Venue
+          input(type="text").form-control
+        div.form-group
+          label(for="startDate") Start Date
+          input(type="date").form-control
+        div.form-group
+          label(for="endDate") End Date
+          input(type="date").form-control
+        div.form-group
+          input(type="submit" value="Submit").btn.btn-info.form-control
+  
+  div(class="card border-dark mb-3").shadowed.mt-5
+    div.card-header.font-weight-bold Add Event Attended
+    div(class="card-body text-dark").px-5
+      <!-- h5(class="card-title") card -->
+      form.w-100(action="/data/attended" method="post")
+        div.form-group
+          label(for="name") Event Name
+          input(type="text").form-control
+        div.form-group
+          label(for="sponsor") Sponsor
+          input(type="text").form-control
+        div.form-group
+          label(for="venue") Venue
+          input(type="text").form-control
+        div.form-group
+          label(for="startDate") Start Date
+          input(type="date").form-control
+        div.form-group
+          label(for="endDate") End Date
+          input(type="date").form-control
+        div.form-group
+          input(type="submit" value="Submit").btn.btn-info.form-control
+  
