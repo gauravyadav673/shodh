@@ -18,7 +18,7 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 
 /*    req.checkBody('name', 'Name field is required').notEmpty();
     req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();    
+    req.checkBody('grant', 'Grant field is required').notEmpty();
     req.checkBody('venue', 'Venue field is required').notEmpty();
     req.checkBody('startDate', 'Start Date is required').notEmpty();
     req.checkBody('endDate', 'End Date is required').notEmpty();
@@ -39,7 +39,7 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 		});
 		newOrganised.save(function(err, organised){
 			res.redirect('/');
-		});	
+		});
     }
 */
 	if(name && userName && sponsor && grant && venue && startDate && endDate && duration){
@@ -88,8 +88,12 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 });
 
 router.post('/patent', ensureAuthenticated, function(req, res, next){
+<<<<<<< HEAD
 	console.log(req);
 	var userName = req.user.userName;
+=======
+	var userName = req.body.userName;
+>>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
 	var name = req.body.patentName;
 	var patentNumber = req.body.patentNumber;
 	var description = req.body.description;
@@ -109,8 +113,12 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 			res.redirect('/addData');
 		});
 	}else{
+<<<<<<< HEAD
 		console.log(userName);
 		res.redirect('/addData');
+=======
+		res.redirect('/');
+>>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
 	}
 });
 
@@ -125,7 +133,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 
 /*    req.checkBody('name', 'Name field is required').notEmpty();
     req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();    
+    req.checkBody('grant', 'Grant field is required').notEmpty();
     req.checkBody('description', 'Description field is required').notEmpty();
     req.checkBody('startDate', 'Start Date is required').notEmpty();
 
@@ -141,7 +149,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			description:description,
 			startDate:startDate,
 			endDate:endDate
-		});	
+		});
     	newProject.save(function(err, project){
     		res.redirect('/');
 		});
@@ -156,7 +164,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			description:description,
 			startDate:startDate,
 			endDate:endDate
-		});		
+		});
 		newProject.save(function(err, project){
 			if(err)
 				console.log(err);
@@ -169,7 +177,11 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 });
 
 function ensureAuthenticated(req, res, next) {
+<<<<<<< HEAD
 	//console.log(req.user);
+=======
+	// console.log(req.user);
+>>>>>>> fda4ece91a66504f6139e52ca464337f749c9ea0
     if(req.isAuthenticated()){
       return next();
     }
