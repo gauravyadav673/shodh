@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h2.page-header Register
+    p Register below
+    if errors
+        each error, i in errors
+            div.alert.alert-danger #{error.msg}
+    form(method='post', action='/users/register', enctype='multipart/form-data')
+        .form-group
+            label Name
+            input.form-control(name='name', type='text', placeholder='Enter Name Here')
+        .form-group
+            label Email
+            input.form-control(name='email', type='email', placeholder='Enter Email Here')
+        .form-group
+            label Username
+            input.form-control(name='username', type='text', placeholder='Enter Username here')
+        .form-group
+            label ScholarID
+            input.form-control(name='scholar_id', type='text', placeholder='Enter Scholar ID here')
+        .form-group
+            label Password
+            input.form-control(name='password', type='password', placeholder='Enter Password here')
+        .form-group
+            label Confirm Password
+            input.form-control(name='password2', type='password', placeholder='Confirm Password here')
+        input.btn.btn-primary(name='submit', value='Register', type='submit')
