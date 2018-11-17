@@ -122,13 +122,8 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 
 ////////***** Getters Start*****/////////
 
-router.get('/getData', function(req, res){
-	var user = req.user;
-
-	if(!user)
-		res.redirect('/users/login');
-	else{
-		var username = user.username;
+router.get('/getData', ensureAuthenticated, function(req, res, next){
+		var username = req.user.username;
 		var patents, projects, eventsOrganised, eventsAttended, citations;
 		proj.find({username:username}, function(err, project){
 			if(!err){
@@ -160,11 +155,85 @@ router.get('/getData', function(req, res){
 			});
 
 		});
+});
 
 
+router.get('/dataByYear', ensureAuthenticated, function(req, res, next){
+	if(req.user.admin){
+		var year = req.params.year;
+		var patents, projects, eventsOrganised, eventsAttended, citations;
+		proj.find({username:username}, function(err, project){
+			if(!err){
+				projects = project;
+			}
+			attended.find({username:username}, function(err, attend){
+				if(!err){
+					eventsAttended = attend;
+				}
+				patent.find({username:username}, function(err, pat){
+					if(!err){
+						patents = pat;
+					}
+					citation.find({username:username}, function(err, cit){
+						if(!err){
+							citations = cit;
+						}
+						organised.find({username:username}, function(err, organise){
+							if(!err){
+								eventsOrganised = organise;
+							}
+						console.log(patents, projects, eventsOrganised, eventsAttended, citations);
+						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
+						})
+
+					});	
+				});			
+
+			});
+
+		});
+	}else{
+		res.redirect('/addData');
+	}
+});
 
 
+router.get('/dataByName', ensureAuthenticated, function(req, res, next){
+	if(req.user.admin){
+		var username = req.params.user;
+		var patents, projects, eventsOrganised, eventsAttended, citations;
+		proj.find({username:username}, function(err, project){
+			if(!err){
+				projects = project;
+			}
+			attended.find({username:username}, function(err, attend){
+				if(!err){
+					eventsAttended = attend;
+				}
+				patent.find({username:username}, function(err, pat){
+					if(!err){
+						patents = pat;
+					}
+					citation.find({username:username}, function(err, cit){
+						if(!err){
+							citations = cit;
+						}
+						organised.find({username:username}, function(err, organise){
+							if(!err){
+								eventsOrganised = organise;
+							}
+						console.log(patents, projects, eventsOrganised, eventsAttended, citations);
+						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
+						})
 
+					});	
+				});			
+
+			});
+
+		});
+	}else{
+		res.redirect('/addData');
 	}
 });
 
