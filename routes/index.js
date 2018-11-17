@@ -7,6 +7,11 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
   res.render('index', { title: 'Members' });
 });
 
+router.get('/addData', ensureAuthenticated, (req, res, next) => {
+	console.log(req.user.username);
+	res.render('addData', {'name': req.user.username});
+});
+
 router.get('/profile', ensureAuthenticated, (req, res, next) => {
 	console.log(req.user.username);
 	res.render('profile', {'name': req.user.username});

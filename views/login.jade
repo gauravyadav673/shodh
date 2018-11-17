@@ -1,13 +1,15 @@
 extends layout
 
 block content
-    h2.page-header Login
-    p Login below
-    form(method='post', action='/users/login')
-        .form-group
-            label Username
-            input.form-control(name='username', type='text', placeholder='Enter Username here')
-        .form-group
-            label Password
-            input.form-control(name='password', type='password', placeholder='Enter Password here')
-        input.btn.btn-primary(name='submit', value='Login', type='submit')
+    <!-- h2.page-header Login -->
+    div.card.border-light.mb-3.shadowed.mt-4
+      div.card-header.font-weight-bold Login
+      div.text-dark.card-body.px-5
+        form(method='post', action='/users/login')
+            .form-group
+                label Username
+                input.form-control(name='username', type='text', placeholder='Enter Username here')
+            .form-group
+                label Password
+                input.form-control(name='password', type='password', placeholder='Enter Password here')
+            input.btn.btn-info(name='submit', value='Login', type='submit')

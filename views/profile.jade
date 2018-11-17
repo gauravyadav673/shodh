@@ -1,111 +1,186 @@
 extends layout
 
 block content
-  
-  <!-- name= name -->
-
-  div.card.border-light.mb-3.shadowed.mt-5
-    div.card-header.font-weight-bold Add Reasearch Project
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Reasearch Projects
     div.text-dark.card-body.px-5
-      <!-- h5(class="card-title") card -->
-      form.w-100(action="/data/project" method="post")
-        div.form-group
-          label(for="name") Project Name
-          input(type="text" required name="name").form-control#name
-        div.form-group
-          label(for="sponsor") Sponsor
-          input(type="text" name="sponsor" required).form-control
-        div.form-group
-          label(for="grant") Grant
-          input(type="text" name="grant" required).form-control
-        div.form-group
-          label(for="venue") Venue
-          input(type="text" name="venue" required).form-control
-        div.form-group
-          label(for="startDate") Start Date
-          input(type="date" name="startDate" required).form-control
-        div.form-group
-          label(for="endDate") End Date
-          input(type="date" name="endDate" required).form-control
-        div.form-group
-          label(for="duration") Duration
-          input(type="text" name="duration" required).form-control
-        div.form-group.d-none
-          input(type="text" name="userName" value= name required).form-control
-        div.form-group
-          input(type="submit" value="Submit").btn.btn-info.form-control
-        
-  div(class="card border-light mb-3").shadowed.mt-5
-    div.card-header.font-weight-bold Add Patent
-    div(class="card-body text-dark").px-5
-      <!-- h5(class="card-title") card -->
-      form.w-100(action="/data/patent" method="post")
-        div.form-group
-          label(for="patentName") Patent Name
-          input(type="text" name="patentName" required).form-control
-        div.form-group
-          label(for="patentNumber") Patent Number
-          input(type="text" name="patentNumber" required).form-control
-        div.form-group
-          label(for="description") Description
-          input(type="text" name="description" required).form-control
-        div.form-group
-          label(for="date") Date
-          input(type="date" name="date" required).form-control
-        div.form-group.d-none
-          input(type="text" name="userName" value= name required).form-control
-        div.form-group
-          input(type="submit" value="Submit").btn.btn-info.form-control
-  
-  div(class="card border-light mb-3").shadowed.mt-5
-    div.card-header.font-weight-bold Add Event Organised
-    div(class="card-body text-dark").px-5
-      <!-- h5(class="card-title") card -->
-      form.w-100(action="/data/organised" method="post")
-        div.form-group
-          label(for="name") Event Name
-          input(type="text" name="name" required).form-control
-          div.form-group
-            label(for="sponsor") Sponsor
-            input(type="text" name="sponsor" required).form-control
-          div.form-group
-            label(for="grant") Grant
-            input(type="text" name="grant" required).form-control
-          div.form-group
-            label(for="venue") Venue
-            input(type="text" name="venue" required).form-control
-          div.form-group
-            label(for="startDate") Start Date
-            input(type="date" name="startDate" required).form-control
-          div.form-group
-            label(for="endDate") End Date
-            input(type="date" name="endDate" required).form-control
-          div.form-group.d-none
-            input(type="text" name="userName" value= name required).form-control
-          div.form-group
-            input(type="submit" value="Submit").btn.btn-info.form-control
-  
-  div(class="card border-light mb-3").shadowed.mt-5
-    div.card-header.font-weight-bold Add Event Attended
-    div(class="card-body text-dark").px-5
-      <!-- h5(class="card-title") card -->
-      form.w-100(action="/data/attended" method="post")
-      label(for="name") Event Name
-      input(type="text" name="name" required).form-control
-      div.form-group
-        label(for="sponsor") Sponsor
-        input(type="text" name="sponsor" required).form-control
-      div.form-group
-        label(for="venue") Venue
-        input(type="text" name="venue" required).form-control
-      div.form-group
-        label(for="startDate") Start Date
-        input(type="date" name="startDate" required).form-control
-      div.form-group
-        label(for="endDate") End Date
-        input(type="date" name="endDate" required).form-control
-      div.form-group.d-none
-        input(type="text" name="userName" value= name required).form-control
-      div.form-group
-        input(type="submit" value="Submit").btn.btn-info.form-control
-  
+      div
+        div
+          img(src="./images/icons/svg/project.svg" alt="project icon").profile-icon
+          h4.has-icon.project-name Project Name 
+        div
+          img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+          h5.has-icon Sponsor: 
+          span Sponsor Name 
+        div
+          img(src="./images/icons/svg/grant.svg" alt="project icon").profile-icon
+          h5.has-icon Grant: 
+          span Grant 
+        div
+          img(src="./images/icons/svg/project.svg" alt="project icon").profile-icon
+          h5.has-icon Venue: 
+          span Venue 
+        div
+          img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+          h5.has-icon  
+          span 1-2-1999 to 
+          h5.has-icon 
+          span 2-2-1999 
+        div
+          img(src="./images/icons/svg/duration.svg" alt="project icon").profile-icon
+          h5.has-icon Duration: 
+          span 2 months 
+        hr
+        div
+          div
+            img(src="./images/icons/svg/project.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name Project Name 
+          div
+            img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span Sponsor Name 
+          div
+            img(src="./images/icons/svg/grant.svg" alt="project icon").profile-icon
+            h5.has-icon Grant: 
+            span Grant 
+          div
+            img(src="./images/icons/svg/project.svg" alt="project icon").profile-icon
+            h5.has-icon Venue: 
+            span Venue 
+          div
+            img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span 1-2-1999 to 
+            h5.has-icon 
+            span 2-2-1999 
+          div
+            img(src="./images/icons/svg/duration.svg" alt="project icon").profile-icon
+            h5.has-icon Duration: 
+            span 2 months 
+    
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Patents
+    div.text-dark.card-body.px-5
+      div
+        div
+          img(src="./images/icons/svg/patent.svg" alt="project icon").profile-icon
+          h4.has-icon.project-name Patent Name 
+        div
+          img(src="./images/icons/svg/number.svg" alt="project icon").profile-icon
+          h5.has-icon Patent Number:  
+          span 123ABC 
+        div
+          img(src="./images/icons/svg/description.svg" alt="project icon").profile-icon
+          h5.has-icon Description: 
+          span Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        div
+          img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+          h5.has-icon Date: 
+          span 01-02-2012 
+        hr
+        div
+          div
+            img(src="./images/icons/svg/patent.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name Patent Name 
+          div
+            img(src="./images/icons/svg/number.svg" alt="project icon").profile-icon
+            h5.has-icon Patent Number:  
+            span 123ABC 
+          div
+            img(src="./images/icons/svg/description.svg" alt="project icon").profile-icon
+            h5.has-icon Description: 
+            span Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          div
+            img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon Date: 
+            span 01-02-2012 
+      
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Events Organised
+    div.text-dark.card-body.px-5
+      div
+        div
+          img(src="./images/icons/svg/event.svg" alt="project icon").profile-icon
+          h4.has-icon.project-name Event Name 
+        div
+          img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+          h5.has-icon Sponsor: 
+          span SPonsor Name 
+        div
+          img(src="./images/icons/svg/grant.svg" alt="project icon").profile-icon
+          h5.has-icon Grant: 
+          span $123 
+        div
+          img(src="./images/icons/svg/venue.svg" alt="project icon").profile-icon
+          h5.has-icon Venue: 
+          span Dubai
+        div
+          img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+          h5.has-icon  
+          span 1-2-1999 to 
+          h5.has-icon 
+          span 2-2-1999 
+        hr
+        div
+          div
+            img(src="./images/icons/svg/event.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name Event Name 
+          div
+            img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span SPonsor Name 
+          div
+            img(src="./images/icons/svg/grant.svg" alt="project icon").profile-icon
+            h5.has-icon Grant: 
+            span $123 
+          div
+            img(src="./images/icons/svg/venue.svg" alt="project icon").profile-icon
+            h5.has-icon Venue: 
+            span Dubai
+          div
+            img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span 1-2-1999 to 
+            h5.has-icon 
+            span 2-2-1999 
+          
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Events Attended
+    div.text-dark.card-body.px-5
+      div
+        div
+          img(src="./images/icons/svg/event.svg" alt="project icon").profile-icon
+          h4.has-icon.project-name Event Name 
+        div
+          img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+          h5.has-icon Sponsor: 
+          span SPonsor Name 
+        div
+          img(src="./images/icons/svg/venue.svg" alt="project icon").profile-icon
+          h5.has-icon Venue: 
+          span Dubai
+        div
+          img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+          h5.has-icon  
+          span 1-2-1999 to 
+          h5.has-icon 
+          span 2-2-1999 
+        hr
+        div
+          div
+            img(src="./images/icons/svg/event.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name Event Name 
+          div
+            img(src="./images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span SPonsor Name 
+          div
+            img(src="./images/icons/svg/venue.svg" alt="project icon").profile-icon
+            h5.has-icon Venue: 
+            span Dubai
+          div
+            img(src="./images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span 1-2-1999 to 
+            h5.has-icon 
+            span 2-2-1999 
