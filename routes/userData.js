@@ -18,7 +18,7 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 
 /*    req.checkBody('name', 'Name field is required').notEmpty();
     req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();    
+    req.checkBody('grant', 'Grant field is required').notEmpty();
     req.checkBody('venue', 'Venue field is required').notEmpty();
     req.checkBody('startDate', 'Start Date is required').notEmpty();
     req.checkBody('endDate', 'End Date is required').notEmpty();
@@ -39,7 +39,7 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 		});
 		newOrganised.save(function(err, organised){
 			res.redirect('/');
-		});	
+		});
     }
 */
 	if(name && userName && sponsor && grant && venue && startDate && endDate && duration){
@@ -88,7 +88,7 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 });
 
 router.post('/patent', ensureAuthenticated, function(req, res, next){
-	var userName = req.user.userName;
+	var userName = req.body.userName;
 	var name = req.body.patentName;
 	var patentNumber = req.body.patentNumber;
 	var description = req.body.description;
@@ -106,7 +106,7 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 			res.redirect('/');
 		});
 	}else{
-		res.res.redirect('/');
+		res.redirect('/');
 	}
 });
 
@@ -121,7 +121,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 
 /*    req.checkBody('name', 'Name field is required').notEmpty();
     req.checkBody('sponsor', 'Sponsor field is required').notEmpty();
-    req.checkBody('grant', 'Grant field is required').notEmpty();    
+    req.checkBody('grant', 'Grant field is required').notEmpty();
     req.checkBody('description', 'Description field is required').notEmpty();
     req.checkBody('startDate', 'Start Date is required').notEmpty();
 
@@ -137,7 +137,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			description:description,
 			startDate:startDate,
 			endDate:endDate
-		});	
+		});
     	newProject.save(function(err, project){
     		res.redirect('/');
 		});
@@ -152,7 +152,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			description:description,
 			startDate:startDate,
 			endDate:endDate
-		});		
+		});
 		newProject.save(function(err, project){
 			res.redirect('/');
 		});
@@ -163,7 +163,7 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 });
 
 function ensureAuthenticated(req, res, next) {
-	console.log(req.user);
+	// console.log(req.user);
     if(req.isAuthenticated()){
       return next();
     }

@@ -22,11 +22,11 @@ ul.navbar-nav > li a:hover{
 }
 
 ul.navbar-nav > li.active a{
-
+  color: white;
 }
 
 .shadowed{
-  box-shadow: 5px 5px 50px #999;
+  box-shadow: 1px 1px 20px #999;
 }
 
 ul.success li{
