@@ -114,7 +114,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
 
 router.get('/login', function(req, res, next) {
     if(req.user)
-        res.redirect('/addData');
+        res.redirect('/profile');
     res.render('login', { title: 'Login' });
 });
 

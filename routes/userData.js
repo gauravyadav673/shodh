@@ -149,8 +149,8 @@ router.get('/getData', ensureAuthenticated, function(req, res, next){
 						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 
@@ -186,8 +186,8 @@ router.get('/dataByYear', ensureAuthenticated, function(req, res, next){
 						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 
@@ -226,8 +226,8 @@ router.get('/dataByName', ensureAuthenticated, function(req, res, next){
 						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 

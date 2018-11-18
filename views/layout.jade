@@ -20,6 +20,9 @@ html(lang='en')
                 a(href='/addData') Add Data
               li(class=(title == 'Profile' ? 'active' : ''))
                 a(href='/profile') Profile
+              if user.admin
+                li(class=(title == 'Admin Zone' ? 'active' : ''))
+                  a(href='/admin') Admin Zone
             if !user
               li(class=(title == 'Register' ? 'active' : ''))
                 a(href='/users/register') Register

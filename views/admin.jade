@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.card.border-light.mb-3.shadowed.mt-4
+    div.card-header.font-weight-bold Search by Username
+    div.text-dark.card-body.px-5
+      form(method='post', action='/searchByUsername')
+          .form-group
+              label Username
+              input.form-control(name='username', type='text', placeholder='Enter Username here')
+            input.btn.btn-info(name='submit', value='Search', type='submit')
+    div.card-header.font-weight-bold Search by Year
+    div.text-dark.card-body.px-5
+      form(method='post', action='/searchByYear')
+          .form-group
+              label Year
+              input.form-control(name='year' type='number' min='1800' max='2099' step='1' placeholder='Enter Year')
+            input.btn.btn-info(name='submit', value='Search', type='submit')

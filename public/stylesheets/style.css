@@ -21,6 +21,12 @@ nav .navbar-brand{
 nav.bg-custom{
   background-color: #0D6565;
 }
+.bg-custom-2{
+  background-color: #3a7d96;
+}
+.bg-custom-3{
+  background-color: #266177;
+}
 ul.navbar-nav > li{
   padding: 1rem 0.5rem;
 }
