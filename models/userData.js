@@ -14,10 +14,10 @@ var attendedSchema = mongoose.Schema({
 		type:String
 	},
 	startDate:{
-		type:Date 
+		type:String 
 	},
 	endDate:{
-		type:Date
+		type:String
 	},
 	duration:{
 		type:String
@@ -45,10 +45,10 @@ var organisedSchema = mongoose.Schema({
 		type:String
 	},
 	startDate:{
-		type:Date 
+		type:String
 	},
 	endDate:{
-		type:Date
+		type:String
 	},
 	duration:{
 		type:String
@@ -73,7 +73,7 @@ var patentSchema = mongoose.Schema({
 		type:String
 	},
 	dateOfPatent:{
-		type:Date
+		type:String
 	},
 	year:{
 		type:String
@@ -99,10 +99,10 @@ var projSchema = mongoose.Schema({
 		type:String
 	},
 	startDate:{
-		type:Date
+		type:String
 	},
 	endDate:{
-		type:Date
+		type:String
 	},
 	year:{
 		type:String

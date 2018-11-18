@@ -7,14 +7,14 @@ block content
     div.text-dark.card-body.px-5
       div
         -each y in citations
-          cit=y.citaionCount,hIn=y.hIndex,iTe=y.iTenIndex 
+         cit=y.citaionCount,hIn=y.hIndex,iTe=y.iTenIndex 
           div
             img(src="/images/icons/svg/citation.svg" alt="project icon").profile-icon
-            h5.has-icon Citation Count: 
+            h5.has-icon Citation Count:
             span #{cit}
           div
             img(src="/images/icons/svg/h-index.svg" alt="project icon").profile-icon
-            h5.has-icon H-Index: 
+            h5.has-icon H-Index:
             span #{hIn}
           div
             img(src="/images/icons/svg/i10index.svg" alt="project icon").profile-icon
