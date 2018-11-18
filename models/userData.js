@@ -21,6 +21,9 @@ var attendedSchema = mongoose.Schema({
 	},
 	duration:{
 		type:String
+	},
+	year:{
+		type:String
 	}
 });
 
@@ -49,6 +52,9 @@ var organisedSchema = mongoose.Schema({
 	},
 	duration:{
 		type:String
+	},
+	year:{
+		type:String
 	}
 });
 
@@ -68,6 +74,9 @@ var patentSchema = mongoose.Schema({
 	},
 	dateOfPatent:{
 		type:Date
+	},
+	year:{
+		type:String
 	}
 });
 
@@ -94,6 +103,9 @@ var projSchema = mongoose.Schema({
 	},
 	endDate:{
 		type:Date
+	},
+	year:{
+		type:String
 	}
 
 });
