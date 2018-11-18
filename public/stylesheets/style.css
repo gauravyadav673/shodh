@@ -21,6 +21,12 @@ nav .navbar-brand{
 nav.bg-custom{
   background-color: #0D6565;
 }
+.bg-custom-2{
+  background-color: #3a7d96;
+}
+.bg-custom-3{
+  background-color: #266177;
+}
 ul.navbar-nav > li{
   padding: 1rem 0.5rem;
 }
@@ -79,8 +85,8 @@ ul.success li{
     border: 1px solid transparent;
     border-radius: 4px;
     color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
+    background-color: #33cc33;
+    border-color: #009900;
     list-style: none;
 }
 ul.error li{

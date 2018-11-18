@@ -3,31 +3,13 @@ extends layout
 block content
 
   div.card.border-light.mb-3.shadowed.mt-4.mb-4
-    div.card-header.font-weight-bold Citations
-    div.text-dark.card-body.px-5
-      div
-        -each y in citations
-         cit=y.citaionCount,hIn=y.hIndex,iTe=y.iTenIndex 
-          div
-            img(src="/images/icons/svg/citation.svg" alt="project icon").profile-icon
-            h5.has-icon Citation Count:
-            span #{cit}
-          div
-            img(src="/images/icons/svg/h-index.svg" alt="project icon").profile-icon
-            h5.has-icon H-Index:
-            span #{hIn}
-          div
-            img(src="/images/icons/svg/i10index.svg" alt="project icon").profile-icon
-            h5.has-icon i10-Index: 
-            span #{iTe}
-
-
-  div.card.border-light.mb-3.shadowed.mt-4.mb-4
     div.card-header.font-weight-bold Reasearch Projects
     div.text-dark.card-body.px-5
       div
         -each y in projects 
-          pName=y.name,sponsor=y.sponsor,grant=y.grant,sDate=y.startDate,eDate=y.endDate,desc=y.description
+          - pName=y.name,sponsor=y.sponsor,grant=y.grant,sDate=y.startDate,eDate=y.endDate,desc=y.description,uName=y.username
+          div
+            p.text-uppercase.font-weight-bold #{uName}
           div
             img(src="/images/icons/svg/project.svg" alt="project icon").profile-icon
             h4.has-icon.project-name #{pName}
@@ -40,7 +22,7 @@ block content
             h5.has-icon Grant: 
             span #{grant} 
           div
-            img(src="/images/icons/svg/project.svg" alt="project icon").profile-icon
+            img(src="/images/icons/svg/description.svg" alt="project icon").profile-icon
             h5.has-icon Description: 
             span #{desc} 
           div
@@ -57,7 +39,9 @@ block content
     div.text-dark.card-body.px-5
       div
         -each y in patents
-          pName=y.name,pNum=y.patentNumber,date=y.dateOfPatent,desc=y.description
+          - pName=y.name,pNum=y.patentNumber,date=y.dateOfPatent,desc=y.description,uName=y.username
+          div
+            p.text-uppercase.font-weight-bold #{uName}
           div
             img(src="/images/icons/svg/patent.svg" alt="project icon").profile-icon
             h4.has-icon.project-name #{pName} 
@@ -80,8 +64,10 @@ block content
     div.card-header.font-weight-bold Events Organised
     div.text-dark.card-body.px-5
       div
-        -each y in projects 
-          eName=y.eventName,sponsor=y.sponsor,grant=y.grant,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration
+        -each y in organised 
+          - eName=y.eventName,sponsor=y.sponsor,grant=y.grant,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration,uName=y.username
+          div
+            p.text-uppercase.font-weight-bold #{uName}
           div
             img(src="/images/icons/svg/event.svg" alt="project icon").profile-icon
             h4.has-icon.project-name #{eName}
@@ -110,8 +96,10 @@ block content
     div.card-header.font-weight-bold Events Attended
     div.text-dark.card-body.px-5
       div
-      -each y in projects 
-          eName=y.eventName,sponsor=y.sponsor,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration
+      -each y in attended
+          - eName=y.eventName,sponsor=y.sponsor,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration,uName=y.username
+          div
+            p.text-uppercase.font-weight-bold #{uName}
           div
             img(src="/images/icons/svg/event.svg" alt="project icon").profile-icon
             h4.has-icon.project-name #{eName} 

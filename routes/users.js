@@ -114,7 +114,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
 
 router.get('/login', function(req, res, next) {
     if(req.user)
-        res.redirect('/addData');
+        res.redirect('/data/profile');
     res.render('login', { title: 'Login' });
 });
 
@@ -123,7 +123,7 @@ router.post('/login',
     function(req, res) {
     req.flash('success', 'You are now logged in');
 
-    res.redirect('/profile');
+    res.redirect('/data/profile');
 });
 
 passport.serializeUser(function(user, done){

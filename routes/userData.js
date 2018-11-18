@@ -14,14 +14,13 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 	var sponsor = req.body.sponsor;
 	var grant = req.body.grant;
 	var venue = req.body.venue;
-	var startDate = req.body.startDate.toString('yyyy-MM-dd');
-	var endDate = req.body.endDate.toString('yyyy-MM-dd');
-	var year = req.body.startDate.toString('yyyy');
+	var startDate = req.body.startDate;
+	var endDate = req.body.endDate;
+	var year = new Date(startDate).getYear();
 	var duration = req.body.duration;
-
 	if(name && userName && sponsor && grant && venue && startDate && endDate){
 		var newOrganised = new organised({
-			userName:userName,
+			username:userName,
 			eventName:name,
 			sponsor:sponsor,
 			grant:grant,
@@ -32,9 +31,16 @@ router.post('/organised', ensureAuthenticated, function(req, res, next){
 			year:year
 		});
 		newOrganised.save(function(err, organised){
+			if(err){
+				console.log(err)
+				req.flash('failure', 'Try Later');
+			}else{
+				req.flash('success', 'Saved Successfully');
+			}
 			res.redirect('/addData');
 		});
 	}else{
+		req.flash('failure', 'InComplete Data');
 		res.redirect('/addData');
 	}
 });
@@ -44,13 +50,13 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 	var userName = req.body.userName;
 	var sponsor = req.body.sponsor;
 	var venue = req.body.venue;
-	var startDate = req.body.startDate.toString('yyyy-MM-dd');
-	var endDate = req.body.endDate.toString('yyyy-MM-dd');
+	var startDate = req.body.startDate;
+	var endDate = req.body.endDate;
 	var duration = req.body.duration;
-	var year = req.body.startDate.toString('yyyy');
+	var year = new Date(startDate).getYear();
 	if(name && userName && sponsor && venue && startDate && endDate){
 		var newAttended = new attended({
-			userName:userName,
+			username:userName,
 			eventName:name,
 			sponsor:sponsor,
 			venue:venue,
@@ -60,9 +66,16 @@ router.post('/attended', ensureAuthenticated, function(req, res, next){
 			year:year
 		});
 		newAttended.save(function(err, attended){
+			if(err){
+				console.log(err)
+				req.flash('failure', 'Try Later');
+			}else{
+				req.flash('success', 'Saved Successfully');
+			}
 			res.redirect('/addData');
 		});
 	}else{
+		req.flash('failure', 'InComplete Data');
 		res.redirect('/addData');
 	}
 });
@@ -73,9 +86,9 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 	var sponsor = req.body.sponsor;
 	var grant = req.body.grant;
 	var description = req.body.description;
-	var startDate = req.body.startDate.toString('yyyy-MM-dd');
-	var endDate = req.body.endDate.toString('yyyy-MM-dd');
-	var year = req.body.startDate.toString('yyyy');
+	var startDate = req.body.startDate;
+	var endDate = req.body.endDate;
+	var year = new Date(startDate).getYear();
 	console.log(username, name, sponsor, grant, description, startDate, endDate);
 	if(username && name && sponsor && grant && description && startDate && endDate){
 		var newProject = new proj({
@@ -89,11 +102,16 @@ router.post('/project', ensureAuthenticated, function(req, res, next){
 			year:year
 		});
 		newProject.save(function(err, project){
-			if(err)
-				console.log(err);
+			if(err){
+				console.log(err)
+				req.flash('failure', 'Try Later');
+			}else{
+				req.flash('success', 'Saved Successfully');
+			}
 			res.redirect('/addData');
 		});
 	}else{
+		req.flash('failure', 'InComplete Data');
 		res.redirect('/addData');
 	}
 
@@ -105,8 +123,8 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 	var name = req.body.patentName;
 	var patentNumber = req.body.patentNumber;
 	var description = req.body.description;
-	var date = req.body.date.toString('yyyy-MM-dd');
-	var year = req.body.date.toString('yyyy');
+	var date = req.body.date;
+	var year = new Date(date).getYear();
 	console.log(userName, name, patentNumber, description, date);
 	if(userName && name && patentNumber && description && date){
 		var newPatent = new patent({
@@ -118,11 +136,16 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 			year:year
 		});
 		newPatent.save(function(err, patent){
-			if(err)
-				console.log(err);
+			if(err){
+				console.log(err)
+				req.flash('failure', 'Try Later');
+			}else{
+				req.flash('success', 'Saved Successfully');
+			}
 			res.redirect('/addData');
 		});
 	}else{
+		req.flash('failure', 'InComplete Data');
 		res.redirect('/addData');
 	}
 });
@@ -130,7 +153,7 @@ router.post('/patent', ensureAuthenticated, function(req, res, next){
 
 ////////***** Getters Start*****/////////
 
-router.get('/getData', ensureAuthenticated, function(req, res, next){
+router.get('/profile', ensureAuthenticated, function(req, res, next){
 		var username = req.user.username;
 		var patents, projects, eventsOrganised, eventsAttended, citations;
 		proj.find({username:username}, function(err, project){
@@ -154,11 +177,11 @@ router.get('/getData', ensureAuthenticated, function(req, res, next){
 								eventsOrganised = organise;
 							}
 						console.log(patents, projects, eventsOrganised, eventsAttended, citations);
-						res.render('testProfile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
+						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 
@@ -167,36 +190,36 @@ router.get('/getData', ensureAuthenticated, function(req, res, next){
 
 ///// next one not completed yet
 
-router.get('/dataByYear', ensureAuthenticated, function(req, res, next){
+router.post('/dataByYear', ensureAuthenticated, function(req, res, next){
 	if(req.user.admin){
-		var year = req.params.year;
+		var year = req.body.year - 1900;
 		var patents, projects, eventsOrganised, eventsAttended, citations;
 		proj.find({year:year}, function(err, project){
 			if(!err){
 				projects = project;
 			}
-			attended.find({username:username}, function(err, attend){
+			attended.find({year:year}, function(err, attend){
 				if(!err){
 					eventsAttended = attend;
 				}
-				patent.find({username:username}, function(err, pat){
+				patent.find({year:year}, function(err, pat){
 					if(!err){
 						patents = pat;
 					}
-					citation.find({username:username}, function(err, cit){
+					citation.find({year:year}, function(err, cit){
 						if(!err){
 							citations = cit;
 						}
-						organised.find({username:username}, function(err, organise){
+						organised.find({year:year}, function(err, organise){
 							if(!err){
 								eventsOrganised = organise;
 							}
 						console.log(patents, projects, eventsOrganised, eventsAttended, citations);
-						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
+						res.render('yearRes', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 
@@ -207,9 +230,9 @@ router.get('/dataByYear', ensureAuthenticated, function(req, res, next){
 });
 
 
-router.get('/dataByName', ensureAuthenticated, function(req, res, next){
+router.post('/dataByName', ensureAuthenticated, function(req, res, next){
 	if(req.user.admin){
-		var username = req.params.user;
+		var username = req.body.username;
 		var patents, projects, eventsOrganised, eventsAttended, citations;
 		proj.find({username:username}, function(err, project){
 			if(!err){
@@ -235,14 +258,14 @@ router.get('/dataByName', ensureAuthenticated, function(req, res, next){
 						res.render('profile', {citations: citations, patents:patents, attended:eventsAttended, organised:eventsOrganised, projects:projects});
 						})
 
-					});	
-				});			
+					});
+				});
 
 			});
 
 		});
 	}else{
-		res.redirect('/addData');
+		res.redirect('/data/addData');
 	}
 });
 

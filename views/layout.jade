@@ -19,7 +19,12 @@ html(lang='en')
               li(class=(title == 'Add Data' ? 'active' : ''))
                 a(href='/addData') Add Data
               li(class=(title == 'Profile' ? 'active' : ''))
-                a(href='/profile') Profile
+                a(href='/data/profile') Profile
+              if user.admin
+                li(class=(title == 'Admin Zone' ? 'active' : ''))
+                  a(href='/admin') Admin Zone
+                li(class=(title == 'Update Citations' ? 'active' : ''))
+                  a(href='/updateCit') Update Citations
             if !user
               li(class=(title == 'Register' ? 'active' : ''))
                 a(href='/users/register') Register
