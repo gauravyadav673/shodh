@@ -1,106 +1,108 @@
 extends layout
 
 block content
-  
   <!-- name= name -->
 
-  div.card.border-light.mb-3.shadowed.mt-5
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
     div.card-header.font-weight-bold Add Reasearch Project
     div.text-dark.card-body.px-5
       <!-- h5(class="card-title") card -->
       form.w-100(action="/data/project" method="post")
         div.form-group
-          label(for="projectName") Project Name
-          input(type="text" required name="projectName").form-control#name
+          label(for="name") Project Name
+          input(type="text" required name="name").form-control#name
         div.form-group
           label(for="sponsor") Sponsor
-          input(type="text" name="sponsor" required).form-control
+          input(type="text" name="sponsor" required).form-control#sponsor
         div.form-group
           label(for="grant") Grant
-          input(type="text" name="grant" required).form-control
+          input(type="text" name="grant" required).form-control#grant
         div.form-group
-          label(for="description") Description
-          input(type="text" name="description" required).form-control
+          label(for="venue") Venue
+          input(type="text" name="venue" required).form-control#venue
         div.form-group
           label(for="startDate") Start Date
-          input(type="date" name="startDate" required).form-control
+          input(type="date" name="startDate" required).form-control#startDate
         div.form-group
           label(for="endDate") End Date
-          input(type="date" name="endDate" required).form-control
+          input(type="date" name="endDate" required).form-control#endDate
+        div.form-group
+          label(for="duration") Duration
+          input(type="text" name="duration" required).form-control#duration
         div.form-group.d-none
           input(type="text" name="userName" value= name required).form-control
         div.form-group
           input(type="submit" value="Submit").btn.btn-info.form-control
         
-  div(class="card border-light mb-3").shadowed.mt-5
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
     div.card-header.font-weight-bold Add Patent
-    div(class="card-body text-dark").px-5
+    div.text-dark.card-body.px-5
       <!-- h5(class="card-title") card -->
       form.w-100(action="/data/patent" method="post")
         div.form-group
           label(for="patentName") Patent Name
-          input(type="text" name="patentName" required).form-control
+          input(type="text" name="patentName" required).form-control#patentName
         div.form-group
           label(for="patentNumber") Patent Number
-          input(type="text" name="patentNumber" required).form-control
+          input(type="text" name="patentNumber" required).form-control#patentNumber
         div.form-group
           label(for="description") Description
-          input(type="text" name="description" required).form-control
+          input(type="text" name="description" required).form-control#description
         div.form-group
           label(for="date") Date
-          input(type="date" name="date" required).form-control
+          input(type="date" name="date" required).form-control#date
         div.form-group.d-none
           input(type="text" name="userName" value= name required).form-control
         div.form-group
           input(type="submit" value="Submit").btn.btn-info.form-control
   
-  div(class="card border-light mb-3").shadowed.mt-5
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
     div.card-header.font-weight-bold Add Event Organised
-    div(class="card-body text-dark").px-5
+    div.text-dark.card-body.px-5
       <!-- h5(class="card-title") card -->
       form.w-100(action="/data/organised" method="post")
         div.form-group
           label(for="name") Event Name
-          input(type="text" name="name" required).form-control
+          input(type="text" name="name" required).form-control#name
           div.form-group
             label(for="sponsor") Sponsor
-            input(type="text" name="sponsor" required).form-control
+            input(type="text" name="sponsor" required).form-control#sponsor
           div.form-group
             label(for="grant") Grant
-            input(type="text" name="grant" required).form-control
+            input(type="text" name="grant" required).form-control#grant
           div.form-group
             label(for="venue") Venue
-            input(type="text" name="venue" required).form-control
+            input(type="text" name="venue" required).form-control#venue
           div.form-group
             label(for="startDate") Start Date
-            input(type="date" name="startDate" required).form-control
+            input(type="date" name="startDate" required).form-control#startDate
           div.form-group
             label(for="endDate") End Date
-            input(type="date" name="endDate" required).form-control
+            input(type="date" name="endDate" required).form-control#endDate
           div.form-group.d-none
             input(type="text" name="userName" value= name required).form-control
           div.form-group
             input(type="submit" value="Submit").btn.btn-info.form-control
   
-  div(class="card border-light mb-3").shadowed.mt-5
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
     div.card-header.font-weight-bold Add Event Attended
-    div(class="card-body text-dark").px-5
+    div.text-dark.card-body.px-5
       <!-- h5(class="card-title") card -->
       form.w-100(action="/data/attended" method="post")
       label(for="name") Event Name
-      input(type="text" name="name" required).form-control
+      input(type="text" name="name" required).form-control#name
       div.form-group
         label(for="sponsor") Sponsor
-        input(type="text" name="sponsor" required).form-control
+        input(type="text" name="sponsor" required).form-control#sponsor
       div.form-group
         label(for="venue") Venue
-        input(type="text" name="venue" required).form-control
+        input(type="text" name="venue" required).form-control#venue
       div.form-group
         label(for="startDate") Start Date
-        input(type="date" name="startDate" required).form-control
+        input(type="date" name="startDate" required).form-control#startDate
       div.form-group
         label(for="endDate") End Date
-        input(type="date" name="endDate" required).form-control
+        input(type="date" name="endDate" required).form-control#endDate
       div.form-group.d-none
         input(type="text" name="userName" value= name required).form-control
       div.form-group

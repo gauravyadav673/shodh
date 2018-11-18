@@ -4,31 +4,32 @@ html(lang='en')
     title= 'Welcome'
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href="https://fonts.googleapis.com/css?family=Dosis|Poppins" rel="stylesheet")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-custom
-      div.container-fluid
-        a.navbar-brand(href="#") Shodh Sanchar
+    nav.navbar.navbar-expand-md.navbar-light.bg-custom
+      div.container-fluid      
+        a.navbar-brand(href="/") Shodh Sanchar
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar-collapsible', aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         
-        .navbar-collapse.collapse#navbar-collapsible
+        div.navbar-collapse.collapse#navbar-collapsible
           ul.navbar-nav.mr-auto
             if user
-              li(class=(title == 'Members' ? 'active' : ''))
-                a(href='/') Add Data
-              li(class=(title == 'Member' ? 'active' : ''))
-                a(href='/data/getData') Profile
+              li(class=(title == 'Add Data' ? 'active' : ''))
+                a(href='/addData') Add Data
+              li(class=(title == 'Profile' ? 'active' : ''))
+                a(href='/profile') Profile
             if !user
               li(class=(title == 'Register' ? 'active' : ''))
                 a(href='/users/register') Register
               li(class=(title == 'Login' ? 'active' : ''))
                 a(href='/users/login') Login
-            if user
-          ul.navbar-nav.ml-auto
-            li
-              a(href='/users/logout') Logout
-    .container
+          if user
+            ul.navbar-nav.ml-auto
+              li
+                a(href='/users/logout') Logout
+    div.container
       !=messages()
       block content
 

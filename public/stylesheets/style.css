@@ -1,37 +1,81 @@
+html{
+  background-color: #EBF6F7;
+}
+body{
+  background: linear-gradient(top, #CFEDF2 0%, #EBF6F7 100%) no-repeat;
+  background: -webkit-linear-gradient(top, #CFEDF2 0%, #EBF6F7 100%) no-repeat;
+  background: -moz-linear-gradient(top, #CFEDF2 0%, #EBF6F7 100%) no-repeat;
+}
+
+/* navbar styling */
 .navbar{
   padding: 0;
+  box-shadow: 1px 1px 20px #777;
+}
+.navbar .container-fluid{
+  padding: 0px 15px 0px 15px;
 }
 nav .navbar-brand{
   color: white !important;
 }
 nav.bg-custom{
-  background-color: #17A2B8;
+  background-color: #0D6565;
 }
-
-ul.navbar-nav > li, .navbar-brand{
-  padding: 1rem 1rem;
+ul.navbar-nav > li{
+  padding: 1rem 0.5rem;
 }
-
+.navbar-brand{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-family: 'Dosis', sans-serif;
+}
 ul.navbar-nav > li a{
-  color: #000;
-  padding: 5px 10px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 1rem 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+ul.navbar-nav > li.active a{
+  color: white;
 }
 ul.navbar-nav > li a:hover{
   color: white;
   text-decoration: none;
 }
-
-ul.navbar-nav > li.active a{
-  color: white;
-}
-
 .shadowed{
   box-shadow: 1px 1px 20px #999;
 }
 
+/* card */
+.card-header{
+  /* font-family: 'Dosis', sans-serif; */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* form styling */
+label{
+  font-weight: 500;
+}
+
+/* for icons */
+.has-icon{
+  font-family: 'Dosis', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  display: inline;
+}
+.profile-icon{
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* flash messages styling */
+ul.success, ul.error{
+  padding: 0;
+  list-style-type: none;
+}
 ul.success li{
     padding: 15px;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
     border: 1px solid transparent;
     border-radius: 4px;
     color: #3c763d;
@@ -41,7 +85,7 @@ ul.success li{
 }
 ul.error li{
     padding: 15px;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
     border: 1px solid transparent;
     border-radius: 4px;
     color: #a94442;

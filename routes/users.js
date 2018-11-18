@@ -37,7 +37,7 @@ function retrieveCitations(scholarID, username){
         newCitation.save(function(err, cit){
             if(err){
                 console.log(err);
-                return 1;                
+                return 1;
             }
             return 0;
 
@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('register');
+    res.render('register', {'title': 'Register'});
 });
 
 router.post('/register', upload.single('profileimage'), function(req, res, next) {
@@ -71,7 +71,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
     }
     req.checkBody('name', 'Name field is required').notEmpty();
     req.checkBody('email', 'Email field is required').notEmpty();
-    req.checkBody('scholar_id', 'Scholar ID is required').notEmpty();    
+    req.checkBody('scholar_id', 'Scholar ID is required').notEmpty();
     req.checkBody('email', 'Email not correct').isEmail();
     req.checkBody('username', 'Userame field is required').notEmpty();
     req.checkBody('password', 'Password field is required').notEmpty();
@@ -102,7 +102,7 @@ router.post('/register', upload.single('profileimage'), function(req, res, next)
                     retrieveCitations(scholarID, username);
                     req.flash('success', 'You are registered and can now login');
                     res.redirect('/users/login');
-                });                
+                });
             }else{
                 console.log(user);
                 res.render('register');
@@ -123,7 +123,7 @@ router.post('/login',
     function(req, res) {
     req.flash('success', 'You are now logged in');
 
-    res.redirect('/addData');
+    res.redirect('/profile');
 });
 
 passport.serializeUser(function(user, done){

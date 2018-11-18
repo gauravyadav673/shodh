@@ -1,0 +1,132 @@
+extends layout
+
+block content
+
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Citations
+    div.text-dark.card-body.px-5
+      div
+        -each y in citations
+          cit=y.citaionCount,hIn=y.hIndex,iTe=y.iTenIndex 
+          div
+            img(src="/images/icons/svg/citation.svg" alt="project icon").profile-icon
+            h5.has-icon Citation Count: 
+            span #{cit}
+          div
+            img(src="/images/icons/svg/h-index.svg" alt="project icon").profile-icon
+            h5.has-icon H-Index: 
+            span #{hIn}
+          div
+            img(src="/images/icons/svg/i10index.svg" alt="project icon").profile-icon
+            h5.has-icon i10-Index: 
+            span #{iTe}
+
+
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Reasearch Projects
+    div.text-dark.card-body.px-5
+      div
+        -each y in projects 
+          pName=y.name,sponsor=y.sponsor,grant=y.grant,sDate=y.startDate,eDate=y.endDate,desc=y.description
+          div
+            img(src="/images/icons/svg/project.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name #{pName}
+          div
+            img(src="/images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span #{sponsor} 
+          div
+            img(src="/images/icons/svg/grant.svg" alt="project icon").profile-icon
+            h5.has-icon Grant: 
+            span #{grant} 
+          div
+            img(src="/images/icons/svg/project.svg" alt="project icon").profile-icon
+            h5.has-icon Description: 
+            span #{desc} 
+          div
+            img(src="/images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span #{sDate} to 
+            h5.has-icon 
+            span #{eDate}  
+          hr
+
+    
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Patents
+    div.text-dark.card-body.px-5
+      div
+        -each y in patents
+          pName=y.name,pNum=y.patentNumber,date=y.dateOfPatent,desc=y.description
+          div
+            img(src="/images/icons/svg/patent.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name #{pName} 
+          div
+            img(src="/images/icons/svg/number.svg" alt="project icon").profile-icon
+            h5.has-icon Patent Number:  
+            span #{pNum} 
+          div
+            img(src="/images/icons/svg/description.svg" alt="project icon").profile-icon
+            h5.has-icon Description: 
+            span #{desc}
+          div
+            img(src="/images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon Date: 
+            span #{date} 
+          hr
+
+      
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Events Organised
+    div.text-dark.card-body.px-5
+      div
+        -each y in projects 
+          eName=y.eventName,sponsor=y.sponsor,grant=y.grant,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration
+          div
+            img(src="/images/icons/svg/event.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name #{eName}
+          div
+            img(src="/images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span #{sponsor}
+          div
+            img(src="/images/icons/svg/grant.svg" alt="project icon").profile-icon
+            h5.has-icon Grant: 
+            span #{grant}
+          div
+            img(src="/images/icons/svg/venue.svg" alt="project icon").profile-icon
+            h5.has-icon Venue: 
+            span #{venue}
+          div
+            img(src="/images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span #{sDate} to 
+            h5.has-icon 
+            span #{eDate} 
+          hr
+
+          
+  div.card.border-light.mb-3.shadowed.mt-4.mb-4
+    div.card-header.font-weight-bold Events Attended
+    div.text-dark.card-body.px-5
+      div
+      -each y in projects 
+          eName=y.eventName,sponsor=y.sponsor,venue=y.venue,sDate=y.startDate,eDate=y.endDate,dur=y.duration
+          div
+            img(src="/images/icons/svg/event.svg" alt="project icon").profile-icon
+            h4.has-icon.project-name #{eName} 
+          div
+            img(src="/images/icons/svg/sponsor.svg" alt="project icon").profile-icon
+            h5.has-icon Sponsor: 
+            span #{sponsor} 
+          div
+            img(src="/images/icons/svg/venue.svg" alt="project icon").profile-icon
+            h5.has-icon Venue: 
+            span #{venue}
+          div
+            img(src="/images/icons/svg/date.svg" alt="project icon").profile-icon
+            h5.has-icon  
+            span #{sDate} to 
+            h5.has-icon 
+            span #{eDate} 
+          hr
